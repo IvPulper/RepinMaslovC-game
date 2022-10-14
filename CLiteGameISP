@@ -109,7 +109,7 @@ int main()
                     cin >> userAnswerString;
                     if (userAnswerString != listRightAnswers[i] && userAnswerString != listFalseAnswers1[i] && userAnswerString != listFalseAnswers2[i] && userAnswerString != listFalseAnswers3[i])
                     {
-                        cout << "Не корректный ответ" << endl;
+                        cout << "Некорректный ответ" << endl;
                     }
                     else
                     {
@@ -137,7 +137,7 @@ int main()
 
                 if (i == countQuestions - 1)
                 {
-                    cout << "Вы ПОБЕДИЛИ В НАШЕЙ ВЕКТОРИНЕ ПОЗДРАВЛЯЮ! \n" << endl;
+                    cout << "Вы ПОБЕДИЛИ В НАШЕЙ ВИКТОРИНЕ ПОЗДРАВЛЯЮ! \n" << endl;
                 }
             }
         }
@@ -161,7 +161,7 @@ int main()
                 {
                     while (true)
                     {
-                        cout << "Введите число вопросо которые Вы хотите: ";
+                        cout << "Введите число вопросов которые Вы хотите: ";
                         cin >> countQuestions;
                         if (countQuestions == 8 || countQuestions == 10 || countQuestions == 12)
                         {
@@ -169,7 +169,7 @@ int main()
                         }
                         else
                         {
-                            cout << "Вы ввели не корректную цифру." << endl;
+                            cout << "Вы ввели некорректную цифру." << endl;
                         }
 
                     }
@@ -190,11 +190,11 @@ int main()
                         }
                         else if (userAnswerNumber == 2)
                         {
-                            color = "\x1b[93m";
+                            color = "\x1b[94m";
                         }
                         else if (userAnswerNumber == 3)
                         {
-                            color = "\x1b[0";
+                            color = "";
                         }
                         else if (userAnswerNumber == 4)
                         {
@@ -202,7 +202,7 @@ int main()
                         }
                         else
                         {
-                            cout << "Вы ввели не корректную цифру." << endl;
+                            cout << "Вы ввели некорректную цифру." << endl;
                             continue;
                         }
 
@@ -217,7 +217,7 @@ int main()
                 }
                 else
                 {
-                    cout << "Вы ввели не корректную цифру." << endl;
+                    cout << "Вы ввели некорректную цифру." << endl;
                 }
             }
             continue;

@@ -1,0 +1,243 @@
+// maslovrepin.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
+//
+
+#include <iostream>
+#include <Windows.h>
+using namespace std;
+int main()
+{
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+
+
+    cout << "Привет всем! Большие и маленькие, широкие и узкие, сегодня именно Вы поучаствуете в викторине!" << endl;
+    string userName = "No name";
+    int countQuestions = 12;
+    string color = "\x1b[0m";
+    string listQuestion[12] =
+    { "Системный язык программирования?",
+        "Какакой язык относится к Си?",
+        "Сколько времен года?",
+        "Сколько дней в году?",
+        "Сколько дней в неделе?",
+        "Сколько часов в сутках?",
+        "Сколько минут в часе?",
+        "Фамилия Илона?",
+        "Какая фамилия учителя?",
+        "В каком мы кабинете?",
+        "Сколько компьютеров в кабинете для учеников?",
+        "Какой язык мы изучеам?" };
+    string listRightAnswers[12] =
+    { "C++",
+        "C++",
+        "4",
+        "365",
+        "7",
+        "24",
+        "60",
+        "Маск",
+        "Орлов",
+        "407",
+        "12",
+        "C++" };
+    string listFalseAnswers1[12] =
+    { "Python",
+        "Python",
+        "3",
+        "363",
+        "8",
+        "25",
+        "59",
+        "Роберт",
+        "Кудашкин",
+        "402",
+        "15",
+        "C#" };
+    string listFalseAnswers2[12] =
+    { "Ruby",
+        "Ruby",
+        "2",
+        "361",
+        "6",
+        "26",
+        "58",
+        "maslov",
+        "Репин",
+        "403",
+        "10",
+        "Python" };
+    string listFalseAnswers3[12] =
+    { "С#",
+        "Java",
+        "1",
+        "3612",
+        "12",
+        "27",
+        "24",
+        "Ka",
+        "Бастрыкин",
+        "507",
+        "19",
+        "Ruby" };
+    while (true)
+    {
+        cout << "Меню. Выберите пункт и введите цифру пункта." << endl
+            << "1. Начать игру" << endl
+            << "2. Настройки" << endl
+            << "3. Правила" << endl
+            << "4. Выйти" << endl;
+        int life = 3;
+        int score = 0;
+        int userAnswerNumber;
+
+        cin >> userAnswerNumber;
+
+        if (userAnswerNumber == 1)
+        {
+            for (int i = 0; i < countQuestions; i++)
+            {
+                cout << "[\x1b[91m+\x1b[0m] Игрок: " << userName << " | жизни: " << life << " | очки: " << score << endl;
+                cout << "[\x1b[91m" << i + 1 << "\x1b[0m] Вопрос: " << color << listQuestion[i] << "\x1b[0m" << endl;
+                cout << "1. " << listRightAnswers[i] << endl
+                    << "2. " << listFalseAnswers1[i] << endl
+                    << "3. " << listFalseAnswers2[i] << endl
+                    << "4. " << listFalseAnswers3[i] << endl;
+                string userAnswerString;
+                while (true)
+                {
+                    cout << "[\x1b[91m+\x1b[0m] Введите письменно ответ: ";
+                    cin >> userAnswerString;
+                    if (userAnswerString != listRightAnswers[i] && userAnswerString != listFalseAnswers1[i] && userAnswerString != listFalseAnswers2[i] && userAnswerString != listFalseAnswers3[i])
+                    {
+                        cout << "Не корректный ответ" << endl;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+
+                if (userAnswerString == listRightAnswers[i])
+                {
+                    score++;
+                    cout << "Вы ответили верно! \n" << endl;
+                }
+                else
+                {
+                    life--;
+                    cout << "Вы ответили не верно! \n" << endl;
+                }
+
+                if (life == 0)
+                {
+                    cout << "Вы ПРОИГРАЛИ! " << userName << ", у Вас закончелись жизни, так же вы набрали " << score << " очков. \n" << endl;
+                    break;
+                }
+
+                if (i == countQuestions - 1)
+                {
+                    cout << "Вы ПОБЕДИЛИ В НАШЕЙ ВЕКТОРИНЕ ПОЗДРАВЛЯЮ! \n" << endl;
+                }
+            }
+        }
+        else if (userAnswerNumber == 2)
+        {
+            while (true)
+            {
+                cout << "Настройки. Выберите что хотите настроить и напишите цифру пункта." << endl
+                    << "1. Редактирование имя игрока." << endl
+                    << "2. Редактирование вопросов в игре.(8-10-12)" << endl
+                    << "3. Редактирование цвет вопросов." << endl
+                    << "4. Вернуться в меню" << endl;
+                cin >> userAnswerNumber;
+                if (userAnswerNumber == 1)
+                {
+                    cout << "Ваше имя сейчас: " << userName << endl;
+                    cout << "Введите новое имя: ";
+                    cin >> userName;
+                }
+                else if (userAnswerNumber == 2)
+                {
+                    while (true)
+                    {
+                        cout << "Введите число вопросо которые Вы хотите: ";
+                        cin >> countQuestions;
+                        if (countQuestions == 8 || countQuestions == 10 || countQuestions == 12)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            cout << "Вы ввели не корректную цифру." << endl;
+                        }
+
+                    }
+                }
+                else if (userAnswerNumber == 3)
+                {
+                    while (true)
+                    {
+                        cout << "Выберите цвет вопросов и напишите цифру вопроса" << endl
+                            << "1. Красный" << endl
+                            << "2. Синий" << endl
+                            << "3. Белый" << endl
+                            << "4. Вернуться в меню" << endl;
+                        cin >> userAnswerNumber;
+                        if (userAnswerNumber == 1)
+                        {
+                            color = "\x1b[91m";
+                        }
+                        else if (userAnswerNumber == 2)
+                        {
+                            color = "\x1b[93m";
+                        }
+                        else if (userAnswerNumber == 3)
+                        {
+                            color = "\x1b[0";
+                        }
+                        else if (userAnswerNumber == 4)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            cout << "Вы ввели не корректную цифру." << endl;
+                            continue;
+                        }
+
+                    }
+                    continue;
+
+
+                }
+                else if (userAnswerNumber == 4)
+                {
+                    break;
+                }
+                else
+                {
+                    cout << "Вы ввели не корректную цифру." << endl;
+                }
+            }
+            continue;
+
+        }
+        else if (userAnswerNumber == 3)
+        {
+            cout << "Правила игры." << endl
+                << "1. Игрок получает очки за правильный ответ на вопрос." << endl
+                << "2. Игрок проходит дальше за правильный ответ." << endl
+                << "3. Игрок теряет жизнь при неправильном ответе. \n" << endl;
+        }
+        else if (userAnswerNumber == 4)
+        {
+            break;
+        }
+        else
+        {
+            cout << "Вы ввели не корректную цифру." << endl;
+        }
+    }
+}
+
